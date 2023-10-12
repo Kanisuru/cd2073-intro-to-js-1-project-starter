@@ -1,5 +1,5 @@
 /* Create an array named products which you will use to add all of your product object literals that you create in the next step. */
-products = [];
+let products = [];
 /* Create 3 or more product objects using object literal notation 
    Each product should include five properties
    - name: name of product (string)
@@ -37,7 +37,7 @@ products.push(product1, product2, product3);
 */
 
 /* Declare an empty array named cart to hold the items in the cart */
-cart = [];
+let cart = [];
 /* Create a function named addProductToCart that takes in the product productId as an argument
   - addProductToCart should get the correct product based on the productId
   - addProductToCart should then increase the product's quantity
@@ -76,7 +76,7 @@ function decreaseQuantity(productId) {
     cartItem.quantity--;
     if (cartItem.quantity === 0) {
       // Remove product from the cart
-      index = cart.indexOf(cartItem);
+      let index = cart.indexOf(cartItem);
       if (index !== -1) {
         cart.splice(index, 1);
       }
@@ -94,7 +94,7 @@ function removeProductFromCart(productId) {
     cartItem.quantity = 0;
     
     //Remove product from the cart
-    index = cart.indexOf(cartItem);
+    let index = cart.indexOf(cartItem);
     if (index !== -1) {
       cart.splice(index, 1);
     }
@@ -105,7 +105,7 @@ function removeProductFromCart(productId) {
   - cartTotal should return the sum of the products in the cart
 */
 function cartTotal() {
-  total = 0;
+  let total = 0;
   for (const cartItem of cart) {
     total += cartItem.price * cartItem.quantity;
   }
@@ -121,7 +121,14 @@ function emptyCart() {
   - pay will return a positive number if money should be returned to customer
 */
 function pay(amount) {
-  return amount - cartTotal();
+  if (amount>cartTotal()) {
+    return '-'+(cartTotal()-amount);
+  } else if (cartTotal()>amount) {
+    return '+'+(amount-cartTotal());
+  } else {
+    return 0
+  }
+  
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 

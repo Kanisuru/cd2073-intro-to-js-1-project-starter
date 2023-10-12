@@ -122,9 +122,9 @@ function emptyCart() {
 */
 function pay(amount) {
   if (amount>cartTotal()) {
-    return '-'+(cartTotal()-amount);
-  } else if (cartTotal()>amount) {
     return '+'+(amount-cartTotal());
+  } else if (cartTotal()>amount) {
+    return '-'+(cartTotal()-amount);
   } else {
     return 0
   }
